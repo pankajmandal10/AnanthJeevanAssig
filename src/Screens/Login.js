@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <LinearGradient colors={['#E7C9E7', '#4B0082']} style={styles.gradient}>
+    <LinearGradient colors={['#fff', '#3E4095']} style={styles.gradient}>
       <View style={styles.container}>
         <Text style={styles.logo}>Ananth Jeevan</Text>
         <View style={styles.inputContainer}>
