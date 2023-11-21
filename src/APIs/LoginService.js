@@ -23,10 +23,8 @@ export const loginUser = async userData => {
       if (data.success) {
         // Display a success alert
         Alert.alert('Success', 'Authentication successful!');
-        // You can also use the token in your application logic if needed
         console.log('Token:', data.token);
       } else {
-        // Display an alert for unsuccessful authentication
         Alert.alert('Alert', 'Authentication failed');
       }
     } else {
