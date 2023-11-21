@@ -5,11 +5,13 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {loginUser} from '../APIs/LoginService';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,8 +25,12 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = () => {
-    navigation.navigate('Appointment');
+  const handleLogin = async () => {
+    let userData = {
+      email: email,
+      password: password,
+    };
+    await loginUser(userData);
   };
 
   return (
@@ -46,7 +52,7 @@ const Login = () => {
             style={styles.passwordInput}
             placeholder="Password"
             placeholderTextColor="white"
-            secureTextEntry
+            secureTextEntry={!showPassword}
             value={password}
             onChangeText={text => setPassword(text)}
           />
@@ -79,10 +85,18 @@ const Login = () => {
           }}>
           <TouchableOpacity
             style={{justifyContent: 'center', alignContent: 'center'}}
-            onPress={handleLogin}>
+            onPress={() => {}}>
             <Text style={{color: '#fff', fontSize: 15}}>Forgot Password</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.submitButton} onPress={handleLogin}>
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() => {
+              if (email == '' || password == '') {
+                Alert.alert('Alert', 'Please Enter all Details');
+              } else {
+                handleLogin();
+              }
+            }}>
             <Text style={styles.submitButtonText}>Sign In</Text>
           </TouchableOpacity>
         </View>
@@ -112,7 +126,7 @@ const Login = () => {
               alignSelf: 'center',
               marginVertical: 15,
             }}
-            onPress={handleLogin}>
+            onPress={{}}>
             <Text
               style={{
                 color: '#fff',
@@ -124,7 +138,7 @@ const Login = () => {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{alignSelf: 'center'}} onPress={handleLogin}>
+          <TouchableOpacity style={{alignSelf: 'center'}} onPress={{}}>
             <Text
               style={{
                 color: '#fff',
