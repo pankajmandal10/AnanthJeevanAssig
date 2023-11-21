@@ -41,7 +41,6 @@ const Login = () => {
             onChangeText={text => setEmail(text)}
           />
         </View>
-
         <View style={styles.passwordContainer}>
           <TextInput
             style={styles.passwordInput}
@@ -61,7 +60,6 @@ const Login = () => {
             />
           </TouchableOpacity>
         </View>
-
         <View style={styles.checkboxContainer}>
           <Text style={styles.checkboxLabel}>Remember Me</Text>
           <CheckBox
@@ -95,7 +93,7 @@ const Login = () => {
             padding: 7,
             flexDirection: 'row',
           }}
-          onPress={handleLogin}>
+          onPress={() => {}}>
           <Text
             style={{
               fontSize: 22,
