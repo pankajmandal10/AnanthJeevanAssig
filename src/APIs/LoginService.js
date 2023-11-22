@@ -12,7 +12,7 @@ export const loginUser = async userData => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userData), // Removed unnecessary object wrapper
+      body: JSON.stringify(userData),
     });
 
     console.warn('in res po', response.status, response.ok);
